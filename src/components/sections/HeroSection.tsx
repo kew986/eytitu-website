@@ -328,13 +328,6 @@ export const HeroSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Floating Pill Badge Overlapping Below Phone */}
-              <div className="flex justify-center -mt-3.5 relative z-40">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#181C1B] border border-white/15 text-[10px] font-mono text-neutral-300 shadow-xl backdrop-blur-md">
-                  <span>🇵🇭</span>
-                  <span>Philippines Mobility Node 01</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>

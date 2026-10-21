@@ -56,154 +56,93 @@ export const Footer: React.FC = () => {
               </a>
             </div>
 
-            <p className="font-['Poppins'] text-sm text-neutral-400 leading-relaxed mb-8">
+            <p className="font-['Poppins'] text-sm text-neutral-400 leading-relaxed">
               The digital foundation connecting local taxi discovery, driver operations, and fleet management.
             </p>
-
-            {/* Operating System Node badge */}
-            <div className="flex items-center gap-2 text-xs font-mono text-neutral-300">
-              <span className="w-2 h-2 rounded-full bg-[#F8E804] animate-pulse" />
-              <span>Operating System v2.4 (PH Node)</span>
-            </div>
           </div>
 
-          {/* Links Columns: Evenly distributed across remaining available width */}
-          <div className="w-full md:flex-1 grid grid-cols-2 sm:flex sm:justify-between gap-8 sm:gap-10 lg:gap-12">
-            {/* Col 1: Platform */}
+          {/* Right Section: Company Address & Contact Information (Seamless Columns) */}
+          <div className="w-full md:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 md:pl-8 lg:pl-12">
+            {/* Column 1: Company Address */}
             <div>
               <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-white mb-4">
-                PLATFORM
+                COMPANY ADDRESS
               </h4>
-              <ul className="space-y-3 text-xs sm:text-sm font-['Poppins']">
-                <li>
-                  <a
-                    href="/#features"
-                    onClick={(e) => handleLinkClick(e, '/#features')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/platform/universal-app"
-                    onClick={(e) => handleLinkClick(e, '/platform/universal-app')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Universal App
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/platform/public-mobility-map"
-                    onClick={(e) => handleLinkClick(e, '/platform/public-mobility-map')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Public Mobility Map
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/platform/fleet-console"
-                    onClick={(e) => handleLinkClick(e, '/platform/fleet-console')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Fleet Console
-                  </a>
-                </li>
-              </ul>
+              <div className="space-y-1.5 text-xs sm:text-sm font-['Poppins'] text-neutral-400 leading-relaxed">
+                <p className="text-white font-medium">82 Mobility Technologies Inc.</p>
+                <p>Unit 1402, High Street South Corporate Plaza</p>
+                <p>26th Street cor. 9th Avenue, Bonifacio Global City</p>
+                <p>Taguig City, Metro Manila 1634, Philippines</p>
+              </div>
             </div>
 
-            {/* Col 2: Explore */}
+            {/* Column 2: Contact Information */}
             <div>
               <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-white mb-4">
-                EXPLORE
+                CONTACT INFORMATION
               </h4>
-              <ul className="space-y-3 text-xs sm:text-sm font-['Poppins']">
-                <li>
+              <div className="space-y-4 text-xs sm:text-sm font-['Poppins']">
+                <div>
+                  <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Email Inquiries
+                  </span>
                   <a
-                    href="/#how-it-works"
-                    onClick={(e) => handleLinkClick(e, '/#how-it-works')}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    href="mailto:contact@82mobility.com"
+                    className="text-neutral-300 hover:text-white transition-colors"
                   >
-                    How It Works
+                    contact@82mobility.com
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="/#passengers"
-                    onClick={(e) => handleLinkClick(e, '/#passengers')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Passengers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/#drivers"
-                    onClick={(e) => handleLinkClick(e, '/#drivers')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Drivers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/#transport-operators"
-                    onClick={(e) => handleLinkClick(e, '/#transport-operators')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Transport Operators
-                  </a>
-                </li>
-              </ul>
-            </div>
+                </div>
 
-            {/* Col 3: Information */}
-            <div className="col-span-2 sm:col-span-1">
-              <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-white mb-4">
-                INFORMATION
-              </h4>
-              <ul className="space-y-3 text-xs sm:text-sm font-['Poppins']">
-                <li>
+                <div>
+                  <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Phone & Hotline
+                  </span>
                   <a
-                    href="/about"
-                    onClick={(e) => handleLinkClick(e, '/about')}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    href="tel:+63288880082"
+                    className="text-neutral-300 hover:text-white transition-colors font-mono"
                   >
-                    About 82
+                    +63 (2) 8888-0082
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="/privacy"
-                    onClick={(e) => handleLinkClick(e, '/privacy')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Privacy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/terms"
-                    onClick={(e) => handleLinkClick(e, '/terms')}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
-                    Terms
-                  </a>
-                </li>
-              </ul>
+                </div>
+
+                <div>
+                  <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Operating Hours
+                  </span>
+                  <p className="text-neutral-400">
+                    Mon – Sat, 8:00 AM – 6:00 PM PHT
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Copyright & Security Status */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-['Poppins'] text-neutral-400">
-          <div>
-            © 2026 82. All rights reserved.
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>© 2026 82. All rights reserved.</span>
+            <span className="hidden sm:inline text-neutral-600">·</span>
+            <a
+              href="/privacy"
+              onClick={(e) => handleLinkClick(e, '/privacy')}
+              className="hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <span className="text-neutral-600">·</span>
+            <a
+              href="/terms"
+              onClick={(e) => handleLinkClick(e, '/terms')}
+              className="hover:text-white transition-colors"
+            >
+              Terms of Service
+            </a>
           </div>
 
           <div className="font-mono text-xs text-neutral-400 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span>Security Verified</span>
             <span>·</span>
             <span>Status: Normal</span>
