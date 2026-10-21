@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
@@ -8,6 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   asAnchor?: boolean;
   href?: string;
+  onClick?: (e: React.MouseEvent<any>) => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -45,7 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (asAnchor && href) {
     return (
-      <a href={href} className={combinedClass}>
+      <a href={href} className={combinedClass} {...(props as any)}>
         {icon && iconPosition === 'left' && <span className="shrink-0">{icon}</span>}
         <span>{children}</span>
         {icon && iconPosition === 'right' && <span className="shrink-0">{icon}</span>}

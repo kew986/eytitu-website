@@ -11,19 +11,19 @@ export const FinalCTASection: React.FC = () => {
           {/* Subtle golden ambient glow at top center */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-60 bg-gradient-to-b from-[#F8E804]/15 via-[#F8E804]/5 to-transparent blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+          <div className="relative z-10 w-full max-w-none mx-auto flex flex-col items-center">
             {/* Eyebrow */}
             <div className="mb-6">
               <EyebrowBadge text="MOVING FORWARD TOGETHER" dotColor="none" />
             </div>
 
             {/* Headline */}
-            <h2 className="font-['Manrope'] font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight mb-4">
+            <h2 className="font-['Manrope'] font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-white tracking-tight leading-tight mb-4 md:whitespace-nowrap">
               Make local taxi mobility more connected.
             </h2>
 
             {/* Paragraph */}
-            <p className="font-['Poppins'] text-sm sm:text-base text-neutral-300 leading-relaxed mb-10 max-w-lg">
+            <p className="font-['Poppins'] text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed mb-10 md:whitespace-nowrap">
               Discover how 82 brings practical coordination to existing transport services.
             </p>
 
@@ -31,7 +31,7 @@ export const FinalCTASection: React.FC = () => {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button
                 asAnchor
-                href="#platform"
+                href="/#platform"
                 variant="primary"
                 size="lg"
                 icon={<ArrowRight size={18} className="text-black" />}
@@ -42,7 +42,7 @@ export const FinalCTASection: React.FC = () => {
 
               <Button
                 asAnchor
-                href="#how-it-works"
+                href="/#how-it-works"
                 variant="secondary"
                 size="lg"
                 className="font-medium text-sm sm:text-base px-7 py-3.5"

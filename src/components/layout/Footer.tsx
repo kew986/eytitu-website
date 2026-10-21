@@ -1,18 +1,62 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { BrandLogo } from '../ui/BrandLogo';
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    if (href === '/') {
+      if (location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, '', '/');
+      } else {
+        navigate('/');
+      }
+      return;
+    }
+
+    if (href.startsWith('/#')) {
+      const hash = href.replace('/', '');
+      if (location.pathname === '/') {
+        const targetId = hash.replace('#', '');
+        const target = document.getElementById(targetId);
+        if (target) {
+          const headerOffset = 90;
+          const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          history.pushState(null, '', hash);
+        }
+      } else {
+        navigate(href);
+      }
+      return;
+    }
+
+    navigate(href);
+  };
+
   return (
     <footer className="bg-[#060707] border-t border-white/10 pt-16 sm:pt-20 pb-12 text-neutral-400">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16">
+        <div className="flex flex-col md:flex-row justify-between gap-12 lg:gap-16 pb-16">
           {/* Left Column: Brand & Info */}
-          <div className="md:col-span-5 flex flex-col items-start">
+          <div className="w-full md:max-w-sm flex flex-col items-start shrink-0">
             <div className="mb-6">
-              <BrandLogo variant="footer" size="md" />
+              <a
+                href="/"
+                onClick={(e) => handleLinkClick(e, '/')}
+                className="inline-block cursor-pointer"
+                aria-label="82B Home"
+              >
+                <BrandLogo variant="footer" size="md" />
+              </a>
             </div>
 
-            <p className="font-['Poppins'] text-sm text-neutral-400 leading-relaxed max-w-sm mb-8">
+            <p className="font-['Poppins'] text-sm text-neutral-400 leading-relaxed mb-8">
               The digital foundation connecting local taxi discovery, driver operations, and fleet management.
             </p>
 
@@ -23,8 +67,8 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          {/* Links Columns: Evenly distributed across remaining available width */}
+          <div className="w-full md:flex-1 grid grid-cols-2 sm:flex sm:justify-between gap-8 sm:gap-10 lg:gap-12">
             {/* Col 1: Platform */}
             <div>
               <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-white mb-4">
@@ -32,22 +76,38 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-3 text-xs sm:text-sm font-['Poppins']">
                 <li>
-                  <a href="#features" className="hover:text-white transition-colors">
+                  <a
+                    href="/#features"
+                    onClick={(e) => handleLinkClick(e, '/#features')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#platform" className="hover:text-white transition-colors">
+                  <a
+                    href="/platform/universal-app"
+                    onClick={(e) => handleLinkClick(e, '/platform/universal-app')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Universal App
                   </a>
                 </li>
                 <li>
-                  <a href="#platform" className="hover:text-white transition-colors">
+                  <a
+                    href="/platform/public-mobility-map"
+                    onClick={(e) => handleLinkClick(e, '/platform/public-mobility-map')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Public Mobility Map
                   </a>
                 </li>
                 <li>
-                  <a href="#platform" className="hover:text-white transition-colors">
+                  <a
+                    href="/platform/fleet-console"
+                    onClick={(e) => handleLinkClick(e, '/platform/fleet-console')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Fleet Console
                   </a>
                 </li>
@@ -61,22 +121,38 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-3 text-xs sm:text-sm font-['Poppins']">
                 <li>
-                  <a href="#how-it-works" className="hover:text-white transition-colors">
+                  <a
+                    href="/#how-it-works"
+                    onClick={(e) => handleLinkClick(e, '/#how-it-works')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     How It Works
                   </a>
                 </li>
                 <li>
-                  <a href="#who-its-for" className="hover:text-white transition-colors">
+                  <a
+                    href="/#passengers"
+                    onClick={(e) => handleLinkClick(e, '/#passengers')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Passengers
                   </a>
                 </li>
                 <li>
-                  <a href="#who-its-for" className="hover:text-white transition-colors">
+                  <a
+                    href="/#drivers"
+                    onClick={(e) => handleLinkClick(e, '/#drivers')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Drivers
                   </a>
                 </li>
                 <li>
-                  <a href="#who-its-for" className="hover:text-white transition-colors">
+                  <a
+                    href="/#transport-operators"
+                    onClick={(e) => handleLinkClick(e, '/#transport-operators')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Transport Operators
                   </a>
                 </li>
@@ -90,17 +166,29 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-3 text-xs sm:text-sm font-['Poppins']">
                 <li>
-                  <a href="#hero" className="hover:text-white transition-colors">
+                  <a
+                    href="/about"
+                    onClick={(e) => handleLinkClick(e, '/about')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     About 82
                   </a>
                 </li>
                 <li>
-                  <a href="#problem" className="hover:text-white transition-colors">
+                  <a
+                    href="/privacy"
+                    onClick={(e) => handleLinkClick(e, '/privacy')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Privacy
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className="hover:text-white transition-colors">
+                  <a
+                    href="/terms"
+                    onClick={(e) => handleLinkClick(e, '/terms')}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     Terms
                   </a>
                 </li>

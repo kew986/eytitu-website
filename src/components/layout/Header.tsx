@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { BrandLogo } from '../ui/BrandLogo';
 import { Button } from '../ui/Button';
@@ -9,49 +10,80 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Features', href: '#features' },
-  { label: 'Platform', href: '#platform' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Who It\'s For', href: '#who-its-for' },
+  { label: 'Home', href: '/' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Platform', href: '/#platform' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Who It\'s For', href: '/#who-its-for' },
 ];
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['hero', 'features', 'platform', 'how-it-works', 'who-its-for'];
-      const scrollPos = window.scrollY + 200;
+      if (location.pathname === '/') {
+        const sections = ['hero', 'features', 'platform', 'how-it-works', 'who-its-for'];
+        const scrollPos = window.scrollY + 200;
 
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(sectionId);
-            break;
+        for (const sectionId of sections) {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPos >= top && scrollPos < top + height) {
+              setActiveSection(sectionId);
+              break;
+            }
           }
         }
+      } else {
+        setActiveSection('');
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+
+    if (href === '/' || href === '/#hero') {
+      if (location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, '', '/');
+      } else {
+        navigate('/');
+      }
+      return;
     }
+
+    if (href.startsWith('/#')) {
+      const hash = href.replace('/', '');
+      if (location.pathname === '/') {
+        const targetId = hash.replace('#', '');
+        const target = document.getElementById(targetId);
+        if (target) {
+          const headerOffset = 90;
+          const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          history.pushState(null, '', hash);
+        }
+      } else {
+        navigate(href);
+      }
+      return;
+    }
+
+    navigate(href);
   };
 
   return (
@@ -67,9 +99,10 @@ export const Header: React.FC = () => {
         >
           {/* Logo */}
           <a
-            href="#hero"
-            onClick={(e) => handleNavClick(e, '#hero')}
-            className="flex items-center gap-2 group"
+            href="/"
+            onClick={(e) => handleNavClick(e, '/')}
+            className="flex items-center gap-2 group cursor-pointer"
+            aria-label="82B Home"
           >
             <BrandLogo variant="navbar" size="md" />
           </a>
@@ -77,13 +110,14 @@ export const Header: React.FC = () => {
           {/* Desktop Navigation Links */}
           <ul className="hidden md:flex items-center gap-1 lg:gap-2">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.replace('#', '');
+              const targetKey = item.href === '/' ? 'hero' : item.href.replace('/#', '');
+              const isActive = location.pathname === '/' && activeSection === targetKey;
               return (
                 <li key={item.label}>
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`px-3.5 py-1.5 text-xs lg:text-sm font-['Inter'] font-medium rounded-full transition-colors duration-200 ${
+                    className={`px-3.5 py-1.5 text-xs lg:text-sm font-['Inter'] font-medium rounded-full transition-colors duration-200 cursor-pointer ${
                       isActive
                         ? 'text-white bg-white/10'
                         : 'text-neutral-400 hover:text-white hover:bg-white/5'
@@ -100,10 +134,11 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-3">
             <Button
               asAnchor
-              href="#platform"
+              href="/#platform"
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, '/#platform')}
               size="sm"
               variant="primary"
-              className="text-xs sm:text-sm px-4 sm:px-5 py-2 font-bold"
+              className="text-xs sm:text-sm px-4 sm:px-5 py-2 font-bold cursor-pointer"
             >
               Explore 82
             </Button>
@@ -112,7 +147,7 @@ export const Header: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full text-neutral-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="md:hidden p-2 rounded-full text-neutral-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -130,7 +165,7 @@ export const Header: React.FC = () => {
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="block px-4 py-2.5 text-sm font-['Inter'] font-medium text-neutral-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
+                    className="block px-4 py-2.5 text-sm font-['Inter'] font-medium text-neutral-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors cursor-pointer"
                   >
                     {item.label}
                   </a>
