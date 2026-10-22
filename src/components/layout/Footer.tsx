@@ -146,25 +146,34 @@ export const Footer: React.FC = () => {
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-neutral-400">
             <a
-              href="/privacy"
-              onClick={(e) => handleLinkClick(e, '/privacy')}
-              className="hover:text-white transition-colors"
+              href="#privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
             >
               Privacy Policy
             </a>
             <span className="text-neutral-600">•</span>
             <a
-              href="/terms"
-              onClick={(e) => handleLinkClick(e, '/terms')}
-              className="hover:text-white transition-colors"
+              href="#terms"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
             >
               Terms of Service
             </a>
             <span className="text-neutral-600">•</span>
             <a
-              href="/privacy"
-              onClick={(e) => handleLinkClick(e, '/privacy')}
-              className="hover:text-white transition-colors"
+              href="#security"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
             >
               Security & Compliance
             </a>

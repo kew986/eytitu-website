@@ -4,12 +4,6 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTopOrHash } from './components/utils/ScrollToTopOrHash';
 import { HomePage } from './pages/HomePage';
-import { UniversalAppPage } from './pages/UniversalAppPage';
-import { PublicMobilityMapPage } from './pages/PublicMobilityMapPage';
-import { FleetConsolePage } from './pages/FleetConsolePage';
-import { AboutPage } from './pages/AboutPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { TermsPage } from './pages/TermsPage';
 
 export const App: React.FC = () => {
   return (
@@ -21,17 +15,11 @@ export const App: React.FC = () => {
         {/* 1. Shared Sticky Navigation Header */}
         <Header />
 
-        {/* Main Content Area */}
+        {/* Main Landing Page Content */}
         <main className="flex-1 w-full">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/platform/universal-app" element={<UniversalAppPage />} />
-            <Route path="/platform/public-mobility-map" element={<PublicMobilityMapPage />} />
-            <Route path="/platform/fleet-console" element={<FleetConsolePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            {/* Catch-all route gracefully navigates to homepage */}
+            {/* Catch-all route returns to the main landing page */}
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>
