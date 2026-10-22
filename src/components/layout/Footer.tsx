@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Mail } from 'lucide-react';
 import { BrandLogo } from '../ui/BrandLogo';
 
 export const Footer: React.FC = () => {
@@ -56,9 +57,37 @@ export const Footer: React.FC = () => {
               </a>
             </div>
 
-            <p className="font-['Poppins'] text-sm text-neutral-400 leading-relaxed">
+            <p className="font-['Poppins'] text-sm text-neutral-400 leading-relaxed mb-4">
               The digital foundation connecting local taxi discovery, driver operations, and fleet management.
             </p>
+
+            {/* Sub-badge pill matching WORKA style */}
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#141816] border border-white/10 text-[10px] font-mono text-neutral-300 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F8E804]" />
+              <span className="tracking-wide uppercase">LOCAL MOBILITY TELEMATICS & FIELD CONTROL</span>
+            </div>
+
+            {/* Social & Contact Icons */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.linkedin.com/company/sieitz-solutions-opc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#F8E804] hover:border-[#F8E804]/40 transition-colors"
+                aria-label="Sieitz Solutions LinkedIn"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 0 0-1.66 1.64 1.65 1.65 0 0 0 1.66 1.64 1.64 1.64 0 0 0 1.65-1.64 1.64 1.64 0 0 0-1.65-1.64" />
+                </svg>
+              </a>
+              <a
+                href="mailto:contact@sieitz.com"
+                className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#F8E804] hover:border-[#F8E804]/40 transition-colors"
+                aria-label="Email Sieitz Solutions"
+              >
+                <Mail size={16} />
+              </a>
+            </div>
           </div>
 
           {/* Right Section: Company Address & Contact Information (Seamless Columns) */}
@@ -69,10 +98,9 @@ export const Footer: React.FC = () => {
                 COMPANY ADDRESS
               </h4>
               <div className="space-y-1.5 text-xs sm:text-sm font-['Poppins'] text-neutral-400 leading-relaxed">
-                <p className="text-white font-medium">82 Mobility Technologies Inc.</p>
-                <p>Unit 1402, High Street South Corporate Plaza</p>
-                <p>26th Street cor. 9th Avenue, Bonifacio Global City</p>
-                <p>Taguig City, Metro Manila 1634, Philippines</p>
+                <p className="text-white font-medium">Sieitz Solutions OPC</p>
+                <p>Office: Iloilo City</p>
+                <p>Philippines</p>
               </div>
             </div>
 
@@ -84,46 +112,39 @@ export const Footer: React.FC = () => {
               <div className="space-y-4 text-xs sm:text-sm font-['Poppins']">
                 <div>
                   <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
-                    Email Inquiries
+                    EMAIL INQUIRIES
                   </span>
                   <a
-                    href="mailto:contact@82mobility.com"
+                    href="mailto:contact@sieitz.com"
                     className="text-neutral-300 hover:text-white transition-colors"
                   >
-                    contact@82mobility.com
+                    contact@sieitz.com
                   </a>
                 </div>
 
                 <div>
                   <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
-                    Phone & Hotline
+                    PHONE & HOTLINE
                   </span>
                   <a
-                    href="tel:+63288880082"
+                    href="tel:+639278335030"
                     className="text-neutral-300 hover:text-white transition-colors font-mono"
                   >
-                    +63 (2) 8888-0082
+                    +63 927-833-5030
                   </a>
-                </div>
-
-                <div>
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
-                    Operating Hours
-                  </span>
-                  <p className="text-neutral-400">
-                    Mon – Sat, 8:00 AM – 6:00 PM PHT
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Copyright & Security Status */}
+        {/* Bottom Copyright & Legal Links */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-['Poppins'] text-neutral-400">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span>© 2026 82. All rights reserved.</span>
-            <span className="hidden sm:inline text-neutral-600">·</span>
+          <div>
+            © 2026 82 Inc. All rights reserved.
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-neutral-400">
             <a
               href="/privacy"
               onClick={(e) => handleLinkClick(e, '/privacy')}
@@ -131,7 +152,7 @@ export const Footer: React.FC = () => {
             >
               Privacy Policy
             </a>
-            <span className="text-neutral-600">·</span>
+            <span className="text-neutral-600">•</span>
             <a
               href="/terms"
               onClick={(e) => handleLinkClick(e, '/terms')}
@@ -139,13 +160,14 @@ export const Footer: React.FC = () => {
             >
               Terms of Service
             </a>
-          </div>
-
-          <div className="font-mono text-xs text-neutral-400 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span>Security Verified</span>
-            <span>·</span>
-            <span>Status: Normal</span>
+            <span className="text-neutral-600">•</span>
+            <a
+              href="/privacy"
+              onClick={(e) => handleLinkClick(e, '/privacy')}
+              className="hover:text-white transition-colors"
+            >
+              Security & Compliance
+            </a>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ export const FeaturesSection: React.FC = () => {
                     Live Sector Radar
                   </span>
                   <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-neutral-300">
-                    Sector 4: Makati
+                    Sector 2: Mandurriao
                   </span>
                 </div>
                 <span className="text-[11px] font-mono text-[#F8E804] font-semibold">
@@ -135,7 +135,7 @@ export const FeaturesSection: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[11px] font-semibold text-white">Makati ➔ NAIA</div>
+                  <div className="text-[11px] font-semibold text-white">Mandurriao ➔ Iloilo Airport</div>
                   <div className="text-[10px] text-neutral-400 font-mono">Direct Fare (Zero Surge)</div>
                 </div>
               </div>
@@ -169,7 +169,7 @@ export const FeaturesSection: React.FC = () => {
                     {dutyActive ? 'Duty Status: Online' : 'Duty Status: Offline'}
                   </div>
                   <div className="text-[10px] font-mono text-neutral-400">
-                    {dutyActive ? 'Broadcasting live GPS in Sector 4' : 'Zero location reporting active'}
+                    {dutyActive ? 'Broadcasting live GPS in Sector 2 (Mandurriao)' : 'Zero location reporting active'}
                   </div>
                 </div>
 

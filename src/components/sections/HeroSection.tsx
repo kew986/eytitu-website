@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Wifi } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Wifi, Phone, MessageSquare, ShieldCheck, Share2, Navigation } from 'lucide-react';
 import { EyebrowBadge } from '../ui/EyebrowBadge';
 import { Button } from '../ui/Button';
 
@@ -132,190 +132,274 @@ export const HeroSection: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Inside Screen Content: 82 System */}
+                    {/* Inside Screen Content: 82 Passenger App */}
                     <div className="flex-1 px-3.5 pt-1 pb-2 flex flex-col gap-2.5 overflow-hidden">
                       
-                      {/* App Header */}
+                      {/* App Header (Passenger View) */}
                       <div className="flex items-center justify-between pb-1 pt-0.5 border-b border-neutral-200/80">
                         <div className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-[#F8E804] border border-neutral-900/40 animate-pulse shadow-sm" />
-                          <span className="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-neutral-900">
-                            Nearby Eligible Taxis
+                          <div className="w-5 h-5 rounded-md bg-[#F8E804] flex items-center justify-center font-black text-black text-[10px] shadow-sm">
+                            82
+                          </div>
+                          <span className="font-['Manrope'] text-[12px] font-bold text-neutral-900 tracking-tight">
+                            Ride Tracking
                           </span>
                         </div>
-                        <span className="px-2 py-0.5 rounded-full bg-neutral-100 border border-neutral-200 text-[10px] font-['Inter'] font-semibold text-neutral-600 shadow-sm">
-                          14 Active
-                        </span>
+                        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-[10px] font-['Inter'] font-semibold text-emerald-700 shadow-sm">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                          </span>
+                          <span>Arriving in 3m</span>
+                        </div>
                       </div>
 
-                      {/* Radar/Map Visualization (Takes flex-1 to fill natural space, no dead void) */}
+                      {/* Map Visualization (Passenger view: clean roads, park, live driver path & pickup beacon) */}
                       <div className="relative w-full flex-1 min-h-[170px] rounded-2xl bg-[#EEF2F6] border border-neutral-200/90 overflow-hidden shadow-sm flex flex-col justify-between p-2.5">
                         {/* Grid texture overlay */}
-                        <div className="absolute inset-0 hero-radar-grid-light opacity-60" />
+                        <div className="absolute inset-0 hero-radar-grid-light opacity-50" />
 
-                        {/* Topographic street & river curves + Active Trajectory */}
                         <svg
                           className="absolute inset-0 w-full h-full pointer-events-none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
-                          {/* Street Grid network (subtle white roads) */}
+                          {/* Soft green urban park */}
+                          <polygon
+                            points="15,12 95,8 85,55 12,48"
+                            fill="#DCFCE7"
+                            stroke="#BBF7D0"
+                            strokeWidth="1"
+                          />
+
+                          {/* Subtle water canal */}
                           <path
-                            d="M -10,48 L 300,48"
-                            stroke="#FFFFFF"
-                            strokeWidth="5"
+                            d="M 235,-10 C 245,40 225,90 270,140"
+                            fill="none"
+                            stroke="#DBEAFE"
+                            strokeWidth="10"
                             strokeLinecap="round"
                           />
+
+                          {/* Clean road network grid (all paths have explicit fill="none") */}
                           <path
-                            d="M -10,135 L 300,105"
+                            d="M -10,38 L 310,38"
+                            fill="none"
                             stroke="#FFFFFF"
                             strokeWidth="6"
                             strokeLinecap="round"
                           />
                           <path
-                            d="M 75,-10 L 75,220"
-                            stroke="#FFFFFF"
-                            strokeWidth="4"
-                          />
-                          <path
-                            d="M 205,-10 L 195,220"
-                            stroke="#FFFFFF"
-                            strokeWidth="5"
-                          />
-                          <path
-                            d="M -10,185 Q 120,150 300,195"
-                            stroke="#FFFFFF"
-                            strokeWidth="5"
-                          />
-
-                          {/* Subtle Metro Zone Polygon */}
-                          <polygon
-                            points="30,40 160,25 240,80 180,150 60,130"
-                            fill="rgba(248,232,4,0.06)"
-                            stroke="rgba(217,119,6,0.18)"
-                            strokeWidth="1"
-                            strokeDasharray="4,3"
-                          />
-
-                          {/* Active Trajectory Line */}
-                          <path
-                            d="M 52,118 Q 120,68 198,48"
+                            d="M -10,105 L 310,105"
                             fill="none"
-                            stroke="#D97706"
-                            strokeWidth="2.5"
-                            strokeDasharray="5,4"
+                            stroke="#FFFFFF"
+                            strokeWidth="8"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M -10,165 L 310,165"
+                            fill="none"
+                            stroke="#FFFFFF"
+                            strokeWidth="6"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M 68,-10 L 68,230"
+                            fill="none"
+                            stroke="#FFFFFF"
+                            strokeWidth="6"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M 175,-10 L 175,230"
+                            fill="none"
+                            stroke="#FFFFFF"
+                            strokeWidth="7"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M 245,-10 L 245,230"
+                            fill="none"
+                            stroke="#FFFFFF"
+                            strokeWidth="5"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M -10,150 L 220,15"
+                            fill="none"
+                            stroke="#FFFFFF"
+                            strokeWidth="5"
+                            strokeLinecap="round"
+                          />
+
+                          {/* Live Driver Trajectory Route (Rolando's path toward passenger pickup) */}
+                          <path
+                            d="M 68,38 L 175,38 L 175,105"
+                            fill="none"
+                            stroke="#F59E0B"
+                            strokeWidth="3.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeDasharray="6,4"
                             className="animate-pulse"
                           />
 
-                          {/* Target Beacon (Rolando's Taxi) */}
-                          <circle cx="52" cy="118" r="11" fill="rgba(248,232,4,0.3)" stroke="#D97706" strokeWidth="1.5" />
-                          <circle cx="52" cy="118" r="4.5" fill="#F8E804" stroke="#78350F" strokeWidth="1" />
+                          {/* Nearby eligible taxis in zone */}
+                          <circle cx="120" cy="38" r="3" fill="#F8E804" stroke="#78350F" strokeWidth="1" />
+                          <circle cx="245" cy="70" r="3" fill="#F8E804" stroke="#78350F" strokeWidth="1" />
+                          <circle cx="68" cy="180" r="3" fill="#F8E804" stroke="#78350F" strokeWidth="1" />
 
-                          {/* Destination Beacon (Passenger Unit) */}
-                          <circle cx="198" cy="48" r="13" fill="rgba(217,119,6,0.18)" />
-                          <circle cx="198" cy="48" r="6" fill="rgba(217,119,6,0.3)" />
-                          <circle cx="198" cy="48" r="3.5" fill="#D97706" />
+                          {/* Driver's Taxi Marker at (68, 38) */}
+                          <circle cx="68" cy="38" r="13" fill="rgba(248,232,4,0.3)" />
+                          <circle cx="68" cy="38" r="6.5" fill="#F8E804" stroke="#78350F" strokeWidth="1.5" />
+                          <circle cx="68" cy="38" r="2" fill="#78350F" />
 
-                          {/* Other Available Taxi Points */}
-                          <circle cx="140" cy="35" r="3.5" fill="#F59E0B" stroke="#FFFFFF" strokeWidth="1" />
-                          <circle cx="235" cy="115" r="3.5" fill="#F59E0B" stroke="#FFFFFF" strokeWidth="1" />
-                          <circle cx="115" cy="165" r="3" fill="#64748B" stroke="#FFFFFF" strokeWidth="0.8" />
-                          <circle cx="215" cy="160" r="3" fill="#F59E0B" stroke="#FFFFFF" strokeWidth="1" />
+                          {/* Passenger Pickup Pin at (175, 105) */}
+                          <circle cx="175" cy="105" r="14" fill="rgba(16,185,129,0.2)" className="animate-ping" />
+                          <circle cx="175" cy="105" r="7" fill="#10B981" stroke="#FFFFFF" strokeWidth="2" />
+                          <circle cx="175" cy="105" r="2.5" fill="#FFFFFF" />
                         </svg>
 
-                        {/* Top-Right Mini Zoom Controls */}
-                        <div className="absolute top-2 right-2 flex flex-col rounded-md bg-white/95 border border-neutral-200/90 shadow-sm backdrop-blur-sm divide-y divide-neutral-100 text-neutral-600 font-bold text-[10px]">
-                          <span className="w-5 h-5 flex items-center justify-center hover:bg-neutral-50 cursor-default">+</span>
-                          <span className="w-5 h-5 flex items-center justify-center hover:bg-neutral-50 cursor-default">−</span>
+                        {/* Top-Right Mini GPS Action */}
+                        <div className="absolute top-2 right-2 flex flex-col gap-1 z-10">
+                          <div className="w-6 h-6 rounded-lg bg-white/95 border border-neutral-200/90 shadow-sm flex items-center justify-center text-neutral-600 backdrop-blur-sm">
+                            <Navigation size={11} className="rotate-45 text-neutral-700" />
+                          </div>
                         </div>
 
-                        {/* Bottom-Left Sector Tag */}
+                        {/* Floating Driver ETA Tag */}
+                        <div className="absolute top-2 left-2 z-10">
+                          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-neutral-900/90 text-white border border-neutral-800 shadow-md backdrop-blur-sm text-[9px] font-['Inter'] font-semibold">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F8E804] animate-ping" />
+                            <span>Taxi TX-8241 • 3 min</span>
+                          </div>
+                        </div>
+
+                        {/* Bottom-Left Passenger Pickup Location Pill */}
                         <div className="relative z-10 mt-auto">
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/95 border border-neutral-200 text-[9px] font-mono text-neutral-800 shadow-sm backdrop-blur-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                            Sector 4: Makati – Taguig
+                          <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/95 border border-neutral-200/90 text-[9px] font-['Inter'] font-semibold text-neutral-800 shadow-sm backdrop-blur-sm">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                            Pickup: Festive Walk, Mandurriao
                           </span>
                         </div>
                       </div>
 
-                      {/* Active Transfer Card */}
-                      <div className="p-3 rounded-2xl bg-white border border-neutral-200/90 shadow-[0_4px_14px_-3px_rgba(0,0,0,0.06)] flex flex-col gap-2">
-                        {/* Header Status Row */}
-                        <div className="flex items-center justify-between text-[10px]">
-                          <span className="font-['Inter'] text-neutral-500 font-semibold uppercase tracking-wider text-[9px]">
-                            Active Transfer
-                          </span>
-                          <span className="flex items-center gap-1.5 text-amber-700 font-semibold font-['Inter'] text-[10px] bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/60">
-                            <span className="relative flex h-1.5 w-1.5">
+                      {/* Active Ride Passenger Card */}
+                      <div className="p-3 rounded-2xl bg-white border border-neutral-200/90 shadow-[0_4px_16px_-3px_rgba(0,0,0,0.07)] flex flex-col gap-2.5">
+                        
+                        {/* Status Header & Verification Boarding PIN */}
+                        <div className="flex items-center justify-between pb-2 border-b border-neutral-100">
+                          <div className="flex items-center gap-2">
+                            <div className="relative flex h-2 w-2">
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500" />
-                            </span>
-                            Dispatch In Progress
-                          </span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+                            </div>
+                            <div>
+                              <div className="font-['Manrope'] font-bold text-[11px] text-neutral-900 leading-none">
+                                Driver on the way
+                              </div>
+                              <div className="font-['Inter'] text-[9px] text-neutral-500 mt-0.5">
+                                Arriving in ~3 mins (0.8 km)
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Verification Boarding PIN */}
+                          <div className="flex items-center gap-1 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-lg text-amber-900">
+                            <span className="text-[8px] font-bold uppercase tracking-wider text-amber-700">PIN</span>
+                            <span className="font-mono font-extrabold text-[11px] tracking-wider text-amber-950">4821</span>
+                          </div>
                         </div>
 
-                        {/* Driver & Vehicle Row */}
-                        <div className="flex items-center justify-between gap-2 pb-2 border-b border-neutral-100">
+                        {/* Driver Profile, Vehicle & Contact Actions */}
+                        <div className="flex items-center justify-between gap-2">
+                          {/* Driver & Car */}
                           <div className="flex items-center gap-2 min-w-0">
-                            <div className="w-7 h-7 rounded-full bg-[#F8E804] text-neutral-950 font-['Inter'] font-extrabold text-[11px] flex items-center justify-center shrink-0 shadow-sm border border-neutral-900/10">
-                              RM
-                            </div>
-                            <div className="min-w-0">
-                              <div className="font-['Inter'] text-[11px] font-bold text-neutral-900 truncate leading-tight">
-                                Rolando M.
+                            <div className="relative shrink-0">
+                              <div className="w-8 h-8 rounded-full bg-[#F8E804] text-neutral-950 font-['Inter'] font-extrabold text-[11px] flex items-center justify-center shadow-sm border border-neutral-900/10">
+                                RM
                               </div>
-                              <div className="font-mono text-[9px] text-neutral-500 truncate">
-                                Toyota Vios • <span className="text-neutral-700 font-medium">TX-8241</span>
+                              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border border-white flex items-center justify-center text-[7px] text-white font-bold">
+                                ✓
+                              </div>
+                            </div>
+
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-1.5">
+                                <span className="font-['Manrope'] text-[11px] font-bold text-neutral-900 truncate">
+                                  Rolando M.
+                                </span>
+                                <span className="flex items-center gap-0.5 text-[9px] font-bold text-amber-700 bg-amber-50 px-1 py-0.5 rounded border border-amber-200/50">
+                                  ★ 4.9
+                                </span>
+                              </div>
+                              <div className="font-['Inter'] text-[9px] text-neutral-500 truncate flex items-center gap-1 mt-0.5">
+                                <span>White Toyota Vios</span>
+                                <span>•</span>
+                                <span className="font-mono font-bold text-neutral-800 bg-neutral-100 px-1 py-0.2 rounded border border-neutral-200/60">
+                                  TX-8241
+                                </span>
                               </div>
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-1 text-[9px] font-mono text-neutral-500 bg-neutral-100 px-1.5 py-0.5 rounded border border-neutral-200/60 shrink-0">
-                            <span>★</span>
-                            <span className="font-bold text-neutral-700">4.9</span>
+                          {/* Call & Chat Quick Passenger Buttons */}
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <div
+                              className="w-7 h-7 rounded-full bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 shadow-sm hover:bg-neutral-200/70 transition-colors"
+                              title="Call driver"
+                            >
+                              <Phone size={11} />
+                            </div>
+                            <div
+                              className="w-7 h-7 rounded-full bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-700 shadow-sm hover:bg-neutral-200/70 transition-colors"
+                              title="Message driver"
+                            >
+                              <MessageSquare size={11} />
+                            </div>
                           </div>
                         </div>
 
-                        {/* Route Path (Makati -> NAIA) */}
-                        <div className="flex items-center justify-between text-[10px] pt-0.5">
-                          <div className="flex items-center gap-1.5 min-w-0">
+                        {/* Destination Route Row */}
+                        <div className="p-2 rounded-xl bg-neutral-50/90 border border-neutral-100 flex flex-col gap-1.5">
+                          <div className="flex items-center gap-2 text-[9px]">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                            <span className="font-semibold text-neutral-800 font-['Inter'] truncate text-[10px]">Makati CBD</span>
+                            <span className="text-neutral-500 font-medium shrink-0">Pickup:</span>
+                            <span className="font-semibold text-neutral-900 truncate">Festive Walk, Mandurriao</span>
                           </div>
-
-                          <div className="flex items-center gap-1 text-neutral-400 px-1 shrink-0">
-                            <span className="text-[8px] font-mono font-medium text-neutral-400">3.8 km</span>
-                            <ArrowRight size={10} className="text-neutral-400" />
+                          <div className="flex items-center gap-2 text-[9px]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                            <span className="text-neutral-500 font-medium shrink-0">Dropoff:</span>
+                            <span className="font-semibold text-neutral-900 truncate">SM City Iloilo, Diversion Rd</span>
                           </div>
+                        </div>
 
-                          <div className="flex items-center gap-1.5 min-w-0 justify-end">
-                            <span className="font-semibold text-neutral-800 font-['Inter'] truncate text-[10px]">NAIA Terminal</span>
-                            <div className="w-5 h-5 rounded-full bg-neutral-100 text-neutral-700 font-['Inter'] font-bold text-[9px] flex items-center justify-center shrink-0 border border-neutral-300">
-                              PA
+                        {/* Fare Box & Zero-Surge Tag */}
+                        <div className="flex items-center justify-between pt-0.5 px-0.5">
+                          <div>
+                            <div className="text-[8px] font-['Inter'] font-semibold uppercase tracking-wider text-neutral-400">
+                              Regulated Fare
                             </div>
+                            <div className="font-mono text-[11px] font-extrabold text-neutral-900 leading-tight">
+                              ₱140 – ₱165
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-[9px] font-medium">
+                            <ShieldCheck size={11} className="text-emerald-600 shrink-0" />
+                            <span>Zero Surge Guarantee</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Duty & Fleet Telemetry Two Columns */}
+                      {/* Bottom Passenger Actions (Share Trip & Safety Tools) */}
                       <div className="grid grid-cols-2 gap-2">
-                        <div className="p-2.5 rounded-xl bg-white border border-neutral-200/90 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] flex flex-col justify-between">
-                          <div className="text-[9px] font-['Inter'] font-bold uppercase tracking-wider text-neutral-400 mb-1">
-                            Duty Status
-                          </div>
-                          <div className="flex items-center gap-1.5 text-[10px] font-['Inter'] font-bold text-neutral-900">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                            <span className="truncate">Online & Ready</span>
-                          </div>
+                        <div className="p-2 rounded-xl bg-white border border-neutral-200/90 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] flex items-center justify-center gap-1.5 text-neutral-800 font-['Inter'] text-[10px] font-semibold hover:bg-neutral-50 transition-colors cursor-pointer">
+                          <Share2 size={11} className="text-neutral-600" />
+                          <span>Share Trip</span>
                         </div>
 
-                        <div className="p-2.5 rounded-xl bg-white border border-neutral-200/90 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] flex flex-col justify-between">
-                          <div className="text-[9px] font-['Inter'] font-bold uppercase tracking-wider text-neutral-400 mb-1">
-                            Fleet Telemetry
-                          </div>
-                          <div className="font-mono text-[11px] font-bold text-neutral-900 leading-tight">
-                            <span className="text-amber-600">38</span>
-                            <span className="text-neutral-400 font-normal text-[10px]"> / 42 Active</span>
-                          </div>
+                        <div className="p-2 rounded-xl bg-white border border-neutral-200/90 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] flex items-center justify-center gap-1.5 text-neutral-800 font-['Inter'] text-[10px] font-semibold hover:bg-neutral-50 transition-colors cursor-pointer">
+                          <ShieldCheck size={11} className="text-emerald-600" />
+                          <span>Safety Tools</span>
                         </div>
                       </div>
                     </div>
