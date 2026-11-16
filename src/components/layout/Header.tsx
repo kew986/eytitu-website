@@ -15,6 +15,7 @@ const navItems: NavItem[] = [
   { label: 'Platform', href: '/#platform' },
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Who It\'s For', href: '/#who-its-for' },
+  { label: 'Guides', href: '/guides' },
 ];
 
 export const Header: React.FC = () => {
@@ -88,9 +89,9 @@ export const Header: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-4 sm:pt-6 transition-all duration-300">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <nav
-          className={`flex items-center justify-between px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border transition-all duration-300 ${
+          className={`flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border transition-all duration-300 ${
             isScrolled
               ? 'bg-[#101312]/90 backdrop-blur-md border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
               : 'bg-[#121514]/80 backdrop-blur-sm border-white/10 shadow-lg'
@@ -108,16 +109,18 @@ export const Header: React.FC = () => {
           </a>
 
           {/* Desktop Navigation Links */}
-          <ul className="hidden md:flex items-center gap-1 lg:gap-2">
+          <ul className="hidden md:flex items-center gap-1 lg:gap-1.5">
             {navItems.map((item) => {
               const targetKey = item.href === '/' ? 'hero' : item.href.replace('/#', '');
-              const isActive = location.pathname === '/' && activeSection === targetKey;
+              const isActive = item.href === '/guides'
+                ? location.pathname === '/guides'
+                : (location.pathname === '/' && activeSection === targetKey);
               return (
-                <li key={item.label}>
+                <li key={item.href}>
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`px-3.5 py-1.5 text-xs lg:text-sm font-['Inter'] font-medium rounded-full transition-colors duration-200 cursor-pointer ${
+                    className={`px-3 py-1.5 text-xs lg:text-sm font-['Inter'] font-medium rounded-full transition-colors duration-200 cursor-pointer ${
                       isActive
                         ? 'text-white bg-white/10'
                         : 'text-neutral-400 hover:text-white hover:bg-white/5'
@@ -130,15 +133,16 @@ export const Header: React.FC = () => {
             })}
           </ul>
 
-          {/* CTA & Mobile Hamburger */}
-          <div className="flex items-center gap-3">
+          {/* Actions: CTA + Mobile Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Explore CTA */}
             <Button
               asAnchor
               href="/#platform"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, '/#platform')}
               size="sm"
               variant="primary"
-              className="text-xs sm:text-sm px-4 sm:px-5 py-2 font-bold cursor-pointer"
+              className="hidden sm:inline-flex text-xs sm:text-sm px-4 sm:px-5 py-2 font-bold cursor-pointer"
             >
               Explore 82
             </Button>
@@ -159,9 +163,9 @@ export const Header: React.FC = () => {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-2 p-4 rounded-3xl bg-[#121514]/95 backdrop-blur-xl border border-white/15 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
-            <ul className="flex flex-col gap-1.5">
+            <ul className="flex flex-col gap-1.5 mb-4">
               {navItems.map((item) => (
-                <li key={item.label}>
+                <li key={item.href}>
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
@@ -172,6 +176,19 @@ export const Header: React.FC = () => {
                 </li>
               ))}
             </ul>
+
+            <div className="pt-3 border-t border-white/10 flex flex-col gap-3">
+              <Button
+                asAnchor
+                href="/#platform"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, '/#platform')}
+                size="sm"
+                variant="primary"
+                className="w-full text-center py-2.5 font-bold cursor-pointer"
+              >
+                Explore 82
+              </Button>
+            </div>
           </div>
         )}
       </div>

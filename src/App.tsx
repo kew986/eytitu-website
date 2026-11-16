@@ -4,6 +4,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTopOrHash } from './components/utils/ScrollToTopOrHash';
 import { HomePage } from './pages/HomePage';
+import { GuidesPage } from './pages/GuidesPage';
 
 export const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ export const App: React.FC = () => {
         <main className="flex-1 w-full">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/guides" element={<GuidesPage />} />
             {/* Catch-all route returns to the main landing page */}
             <Route path="*" element={<HomePage />} />
           </Routes>

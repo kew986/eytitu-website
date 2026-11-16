@@ -146,6 +146,14 @@ export const Footer: React.FC = () => {
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-neutral-400">
             <a
+              href="/guides"
+              onClick={(e) => handleLinkClick(e, '/guides')}
+              className="text-[#F8E804] hover:text-[#faed36] font-medium transition-colors cursor-pointer"
+            >
+              Guides
+            </a>
+            <span className="text-neutral-600">•</span>
+            <a
               href="#privacy"
               onClick={(e) => {
                 e.preventDefault();
